@@ -13,9 +13,15 @@ After=network-pre.target
 Type=oneshot
 ExecStart=/usr/bin/macchanger -r INTERFACE
 ExecStartPost=/sbin/ip link set INTERFACE up
-
 [Install]
 WantedBy=multi-user.target
+
+
+
+
+
+
+
 
 This service will automatically bring down the interface, randomize the MAC address using macchanger, and bring it back up after changing the MAC
 
