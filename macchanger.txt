@@ -1,0 +1,25 @@
+To automatically change the MAC address at boot or when the network interface goes up, you can create a systemd service.
+
+Create a new systemd service file:
+-----------------sudo nano /etc/systemd/system/macchanger.service
+
+Add the following content:
+----------------Replace INTERFACE with your actual network interface name (like eth0 or wlan0).
+[Unit]
+Description=MAC Address Changer
+After=network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/macchanger -r INTERFACE
+ExecStartPost=/sbin/ip link set INTERFACE up
+
+[Install]
+WantedBy=multi-user.target
+
+This service will automatically bring down the interface, randomize the MAC address using macchanger, and bring it back up after changing the MAC
+
+-----------------sudo systemctl daemon-reload
+----------------sudo systemctl enable macchanger.service
+---------------sudo systemctl start macchanger.service
+
