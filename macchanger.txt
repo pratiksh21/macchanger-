@@ -1,8 +1,9 @@
-You need to install macchanger for this sudo apt install macchanger
+You need to install macchanger for this 
 
 To automatically change the MAC address at boot or when the network interface goes up, you can create a systemd service.
 
 Create a new systemd service file:
+----------------- sudo apt install macchanger
 -----------------sudo nano /etc/systemd/system/macchanger.service
 
 Add the following content:
@@ -27,7 +28,7 @@ WantedBy=multi-user.target
 
 This service will automatically bring down the interface, randomize the MAC address using macchanger, and bring it back up after changing the MAC
 
------------------sudo systemctl daemon-reload
-----------------sudo systemctl enable macchanger.service
----------------sudo systemctl start macchanger.service
+sudo systemctl daemon-reload
+sudo systemctl enable macchanger.service
+sudo systemctl start macchanger.service
 
