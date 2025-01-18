@@ -3,8 +3,10 @@ You need to install macchanger for this
 To automatically change the MAC address at boot or when the network interface goes up, you can create a systemd service.
 
 Create a new systemd service file:
------------------ sudo apt install macchanger
------------------sudo nano /etc/systemd/system/macchanger.service
+
+-----------------------------------------------------------------start
+sudo apt install macchanger
+sudo nano /etc/systemd/system/macchanger.service
 
 Add the following content:
 ----------------Replace INTERFACE with your actual network interface name (like eth0 or wlan0).
